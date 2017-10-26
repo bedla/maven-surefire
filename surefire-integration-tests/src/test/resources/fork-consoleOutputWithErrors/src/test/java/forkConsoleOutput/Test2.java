@@ -19,17 +19,32 @@ package forkConsoleOutput;
  * under the License.
  */
 
+import java.util.logging.Logger;
+
 import org.junit.Test;
 
-public class Test2
-{
+public class Test2 {
     @Test
-    public void test6281()
-    {
-        System.out.println( "sout: I am talking to you" );
-        System.out.println( "sout: Will Fail soon" );
-        System.err.println( "serr: And you too" );
-        System.err.println( "serr: Will Fail now" );
-        throw new RuntimeException( "FailHere" );
+    public void test6281() {
+        System.out.println("sout: I am talking to you");
+        System.out.println("sout: Will Fail soon");
+        System.err.println("serr: And you too");
+        System.err.println("serr: Will Fail now");
+        throw new RuntimeException("FailHere");
+    }
+
+    @Test
+    public void testXXX() {
+        System.err.println("INFO: 1 * Server responded with a response on thread grizzly-http-server-0\n"+
+        "1 < 200\n"+
+        "1 < Content-Disposition: attachment; filename=service_action_log.csv\n"+
+        "1 < Content-Type: text/csv\n");
+                System.err.println("id,user\n1,5,Foo,Bar,Xxx,Yyy,\"{\n\"\"a\"\":\"\"b\"\"\n}\",c");
+//        Logger.getLogger("foo").info("INFO: 1 * Server responded with a response on thread grizzly-http-server-0\n"+
+//        "1 < 200\n"+
+//        "1 < Content-Disposition: attachment; filename=service_action_log.csv\n"+
+//        "1 < Content-Type: text/csv\n"+
+//        "id,user\n1,5,Foo,Bar,Xxx,Yyy,\"{\n\"\"a\"\":\"\"b\"\"\n}\",c");
+        new RuntimeException("FailHere").printStackTrace();
     }
 }

@@ -62,6 +62,8 @@ public class MavenLauncher
 
     private boolean expectFailure;
 
+    private boolean debugJvm;
+
     public MavenLauncher( Class testClass, String resourceName, String suffix, String[] cli )
     {
         this.testCaseBeingRun = testClass;
@@ -174,6 +176,11 @@ public class MavenLauncher
     public MavenLauncher assertNotPresent( String subFile )
     {
         getVerifier().assertFileNotPresent( getValidator().getSubFile( subFile ).getAbsolutePath() );
+        return this;
+    }
+
+    public MavenLauncher debugJvm(boolean debugJvm) {
+        getVerifier().setDebugJvm(debugJvm);
         return this;
     }
 

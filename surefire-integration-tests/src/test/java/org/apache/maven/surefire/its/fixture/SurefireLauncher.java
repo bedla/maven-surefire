@@ -164,6 +164,11 @@ public class SurefireLauncher
         return this;
     }
 
+    public SurefireLauncher debugJvm(boolean debugJvm) {
+        mavenLauncher.debugJvm(debugJvm);
+        return this;
+    }
+
     public SurefireLauncher debugLogging()
     {
         mavenLauncher.debugLogging();

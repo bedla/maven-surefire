@@ -9,10 +9,39 @@
   <url>http://maven.apache.org</url>
 
   <dependencies>
+      <!-- Test dependencies -->
       <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>${junit.version}</version>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-api</artifactId>
+          <version>${junit.jupiter.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <!-- Only required to run tests in an IDE that bundles an older version -->
+      <dependency>
+          <groupId>org.junit.platform</groupId>
+          <artifactId>junit-platform-launcher</artifactId>
+          <version>${junit.platform.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <!-- Only required to run tests in an IDE that bundles an older version -->
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-engine</artifactId>
+          <version>${junit.jupiter.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-params</artifactId>
+          <version>${junit.jupiter.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <!-- Only required to run tests in an IDE that bundles an older version -->
+      <dependency>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+          <version>${junit.vintage.version}</version>
+          <scope>test</scope>
       </dependency>
   </dependencies>
   <build>
@@ -38,7 +67,20 @@
              <includes>
                 <include>**/Test*.java</include>
              </includes>
+               <!--<systemProperties>-->
+               <!--<property>-->
+               <!--<name>java.util.logging.config.file</name>-->
+               <!--<value>src/test/resources/logging.properties</value>-->
+               <!--</property>-->
+               <!--</systemProperties>-->
            </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>org.junit.platform</groupId>
+                    <artifactId>junit-platform-surefire-provider</artifactId>
+                    <version>${junit.platform.version}</version>
+                </dependency>
+            </dependencies>
         </plugin>
      </plugins>
 
@@ -51,6 +93,9 @@
       <printSummary>true</printSummary>
       <useFile>true</useFile>
       <reportFormat>brief</reportFormat>
+        <junit.jupiter.version>5.0.0</junit.jupiter.version>
+        <junit.vintage.version>4.12.1</junit.vintage.version>
+        <junit.platform.version>1.0.0</junit.platform.version>
     </properties>
 
 </project>
